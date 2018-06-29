@@ -1036,8 +1036,6 @@ public class NetworkControllerImpl extends BroadcastReceiver
         boolean hspaDataDistinguishable;
         boolean inflateSignalStrengths = false;
         boolean alwaysShowDataRatIcon = false;
-        boolean readIconsFromXml;
-        boolean showRsrpSignalLevelforLTE;
         boolean showVolteIcon;
 
         static Config readConfig(Context context) {
@@ -1060,10 +1058,7 @@ public class NetworkControllerImpl extends BroadcastReceiver
                 config.alwaysShowDataRatIcon = b.getBoolean(
                         CarrierConfigManager.KEY_ALWAYS_SHOW_DATA_RAT_ICON_BOOL);
             }
-            config.readIconsFromXml = res.getBoolean(R.bool.config_read_icons_from_xml);
-            config.showRsrpSignalLevelforLTE =
-                    res.getBoolean(R.bool.config_showRsrpSignalLevelforLTE);
-            config.showVolteIcon = false;
+            config.showVolteIcon = res.getBoolean(R.bool.config_display_volte);
             return config;
         }
     }

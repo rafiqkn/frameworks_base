@@ -205,9 +205,8 @@ public class StatusBarSignalPolicy implements NetworkControllerImpl.SignalCallba
 
     @Override
     public void setMobileDataIndicators(IconState statusIcon, IconState qsIcon, int statusType,
-            int qsType, boolean activityIn, boolean activityOut, int volteIcon,
-            String typeContentDescription, String description, boolean isWide,
-            int subId, boolean roaming) {
+            int qsType, boolean activityIn, boolean activityOut, int volteId, String typeContentDescription,
+            String description, boolean isWide, int subId, boolean roaming) {
         MobileIconState state = getState(subId);
         if (state == null) {
             return;
@@ -224,9 +223,13 @@ public class StatusBarSignalPolicy implements NetworkControllerImpl.SignalCallba
         state.roaming = roaming;
         state.activityIn = activityIn && mActivityEnabled;
         state.activityOut = activityOut && mActivityEnabled;
+<<<<<<< HEAD
         state.volteId = volteIcon;
+=======
+        state.volteId = volteId;
+>>>>>>> e355e36868e... SystemUI: Add VOLTE icon support
 
-        // Always send a copy to maintain value type semantics
+      // Always send a copy to maintain value type semantics
         mIconController.setMobileIcons(mSlotMobile, MobileIconState.copyStates(mMobileStates));
 
         if (typeChanged) {
@@ -419,8 +422,14 @@ public class StatusBarSignalPolicy implements NetworkControllerImpl.SignalCallba
         public boolean needsLeadingPadding;
         public boolean provisioned;
         public String typeContentDescription;
+<<<<<<< HEAD
         public int volteId;
         public Context context;
+=======
+        private boolean mProvisioned = true;
+	public Context mContext;
+        public int volteId;
+>>>>>>> e355e36868e... SystemUI: Add VOLTE icon support
 
         private MobileIconState(int subId, Context context) {
             super();
@@ -446,7 +455,10 @@ public class StatusBarSignalPolicy implements NetworkControllerImpl.SignalCallba
                     typeId == that.typeId &&
                     roaming == that.roaming &&
                     needsLeadingPadding == that.needsLeadingPadding &&
+<<<<<<< HEAD
                     provisioned == that.provisioned &&
+=======
+>>>>>>> e355e36868e... SystemUI: Add VOLTE icon support
                     Objects.equals(typeContentDescription, that.typeContentDescription) &&
                     volteId == that.volteId;
         }
@@ -475,6 +487,10 @@ public class StatusBarSignalPolicy implements NetworkControllerImpl.SignalCallba
             other.needsLeadingPadding = needsLeadingPadding;
             other.provisioned = provisioned;
             other.typeContentDescription = typeContentDescription;
+<<<<<<< HEAD
+=======
+	    other.mContext = mContext;
+>>>>>>> e355e36868e... SystemUI: Add VOLTE icon support
             other.volteId = volteId;
         }
 
